@@ -8,8 +8,6 @@ info:
   version: 1.0.0
 servers:
 - url: https://api.webseite-herunterladen.de/v1
-security:
-- APIKeyHeader: []
 tags:
 - description: Screenshot Capture API
   name: screenshot
@@ -21,7 +19,7 @@ paths:
         website screenshots. It always uses a recent version of Chrome to ensure that
         all modern web features are fully supported and rendering is exactly as your
         customers would expect.
-      operationId: placeScreenshotOrderUnauthenticated
+      operationId: captureScreenshotUnauthenticated
       parameters:
       - description: A valid token is needed to make paid API calls. Tokens can be
           managed from your account.
@@ -422,7 +420,7 @@ paths:
         website screenshots. It always uses a recent version of Chrome to ensure that
         all modern web features are fully supported and rendering is exactly as your
         customers would expect.
-      operationId: placeScreenshotOrderAuthenticated
+      operationId: captureScreenshotAuthenticated
       parameters:
       - description: A valid token is needed to make paid API calls. Tokens can be
           managed from your account.

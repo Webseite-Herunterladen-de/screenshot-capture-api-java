@@ -57,7 +57,7 @@ public class ScreenshotApi {
     }
 
     /**
-     * Build call for placeScreenshotOrderAuthenticated
+     * Build call for captureScreenshotAuthenticated
      * @param token A valid token is needed to make paid API calls. Tokens can be managed from your account. (required)
      * @param hash The hash value is for authenticated requests. If you want to publish this URL, you should use the authenticated requests. (required)
      * @param url The URL of the website you want to capture. Please include the protocol (http:// or https://). (required)
@@ -102,7 +102,7 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call placeScreenshotOrderAuthenticatedCall(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call captureScreenshotAuthenticatedCall(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -259,25 +259,25 @@ public class ScreenshotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call placeScreenshotOrderAuthenticatedValidateBeforeCall(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call captureScreenshotAuthenticatedValidateBeforeCall(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling placeScreenshotOrderAuthenticated(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling captureScreenshotAuthenticated(Async)");
         }
         
         // verify the required parameter 'hash' is set
         if (hash == null) {
-            throw new ApiException("Missing the required parameter 'hash' when calling placeScreenshotOrderAuthenticated(Async)");
+            throw new ApiException("Missing the required parameter 'hash' when calling captureScreenshotAuthenticated(Async)");
         }
         
         // verify the required parameter 'url' is set
         if (url == null) {
-            throw new ApiException("Missing the required parameter 'url' when calling placeScreenshotOrderAuthenticated(Async)");
+            throw new ApiException("Missing the required parameter 'url' when calling captureScreenshotAuthenticated(Async)");
         }
         
 
-        okhttp3.Call localVarCall = placeScreenshotOrderAuthenticatedCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
+        okhttp3.Call localVarCall = captureScreenshotAuthenticatedCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
         return localVarCall;
 
     }
@@ -328,8 +328,8 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public File placeScreenshotOrderAuthenticated(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
-        ApiResponse<File> localVarResp = placeScreenshotOrderAuthenticatedWithHttpInfo(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners);
+    public File captureScreenshotAuthenticated(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
+        ApiResponse<File> localVarResp = captureScreenshotAuthenticatedWithHttpInfo(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners);
         return localVarResp.getData();
     }
 
@@ -379,8 +379,8 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<File> placeScreenshotOrderAuthenticatedWithHttpInfo(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
-        okhttp3.Call localVarCall = placeScreenshotOrderAuthenticatedValidateBeforeCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, null);
+    public ApiResponse<File> captureScreenshotAuthenticatedWithHttpInfo(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
+        okhttp3.Call localVarCall = captureScreenshotAuthenticatedValidateBeforeCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -432,15 +432,15 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call placeScreenshotOrderAuthenticatedAsync(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call captureScreenshotAuthenticatedAsync(String token, String hash, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = placeScreenshotOrderAuthenticatedValidateBeforeCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
+        okhttp3.Call localVarCall = captureScreenshotAuthenticatedValidateBeforeCall(token, hash, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for placeScreenshotOrderUnauthenticated
+     * Build call for captureScreenshotUnauthenticated
      * @param token A valid token is needed to make paid API calls. Tokens can be managed from your account. (required)
      * @param url The URL of the website you want to capture. Please include the protocol (http:// or https://). (required)
      * @param fileType The image file format of the captured screenshot. Either png, jpeg or PDF with 72 dpi. (optional)
@@ -484,7 +484,7 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call placeScreenshotOrderUnauthenticatedCall(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call captureScreenshotUnauthenticatedCall(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -640,20 +640,20 @@ public class ScreenshotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call placeScreenshotOrderUnauthenticatedValidateBeforeCall(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call captureScreenshotUnauthenticatedValidateBeforeCall(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling placeScreenshotOrderUnauthenticated(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling captureScreenshotUnauthenticated(Async)");
         }
         
         // verify the required parameter 'url' is set
         if (url == null) {
-            throw new ApiException("Missing the required parameter 'url' when calling placeScreenshotOrderUnauthenticated(Async)");
+            throw new ApiException("Missing the required parameter 'url' when calling captureScreenshotUnauthenticated(Async)");
         }
         
 
-        okhttp3.Call localVarCall = placeScreenshotOrderUnauthenticatedCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
+        okhttp3.Call localVarCall = captureScreenshotUnauthenticatedCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
         return localVarCall;
 
     }
@@ -703,8 +703,8 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public File placeScreenshotOrderUnauthenticated(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
-        ApiResponse<File> localVarResp = placeScreenshotOrderUnauthenticatedWithHttpInfo(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners);
+    public File captureScreenshotUnauthenticated(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
+        ApiResponse<File> localVarResp = captureScreenshotUnauthenticatedWithHttpInfo(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners);
         return localVarResp.getData();
     }
 
@@ -753,8 +753,8 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<File> placeScreenshotOrderUnauthenticatedWithHttpInfo(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
-        okhttp3.Call localVarCall = placeScreenshotOrderUnauthenticatedValidateBeforeCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, null);
+    public ApiResponse<File> captureScreenshotUnauthenticatedWithHttpInfo(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners) throws ApiException {
+        okhttp3.Call localVarCall = captureScreenshotUnauthenticatedValidateBeforeCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -805,9 +805,9 @@ public class ScreenshotApi {
         <tr><td> 0 </td><td> unexpected error </td><td>  * Content-Type -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call placeScreenshotOrderUnauthenticatedAsync(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call captureScreenshotUnauthenticatedAsync(String token, String url, String fileType, Long ttl, Boolean invalidate, Boolean full, Boolean lazyloadScroll, Long delay, Long width, Long height, Long quality, BigDecimal scale, Long x, Long y, Boolean redirect, String language, Boolean randomUserAgent, String userAgent, String headers, String cookies, String css, String js, String wait, String element, String timezone, String device, BigDecimal latitude, BigDecimal longitude, BigDecimal accuracy, String proxy, Boolean adblock, Boolean hideCookieBanners, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = placeScreenshotOrderUnauthenticatedValidateBeforeCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
+        okhttp3.Call localVarCall = captureScreenshotUnauthenticatedValidateBeforeCall(token, url, fileType, ttl, invalidate, full, lazyloadScroll, delay, width, height, quality, scale, x, y, redirect, language, randomUserAgent, userAgent, headers, cookies, css, js, wait, element, timezone, device, latitude, longitude, accuracy, proxy, adblock, hideCookieBanners, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
