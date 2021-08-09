@@ -1,0 +1,840 @@
+openapi: 3.0.1
+info:
+  description: Webseite-Herunterladen.de Screenshot Capture is a very simple but powerful
+    screenshot API that anyone can easily use to create pixel-perfect website screenshots.
+    It always uses a recent version of Chrome to ensure that all modern web features
+    are fully supported and rendering is exactly as your customers would expect.
+  title: Screenshot Capture API
+  version: 1.0.0
+servers:
+- url: https://api.webseite-herunterladen.de/v1
+security:
+- APIKeyHeader: []
+tags:
+- description: Screenshot Capture API
+  name: screenshot
+paths:
+  /capture/{token}:
+    get:
+      description: Webseite-Herunterladen.de Screenshot Capture is a very simple but
+        powerful screenshot API that anyone can easily use to create pixel-perfect
+        website screenshots. It always uses a recent version of Chrome to ensure that
+        all modern web features are fully supported and rendering is exactly as your
+        customers would expect.
+      operationId: placeScreenshotOrderUnauthenticated
+      parameters:
+      - description: A valid token is needed to make paid API calls. Tokens can be
+          managed from your account.
+        in: path
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: The URL of the website you want to capture. Please include the
+          protocol (http:// or https://).
+        in: query
+        name: url
+        required: true
+        schema:
+          type: string
+      - description: The image file format of the captured screenshot. Either png,
+          jpeg or PDF with 72 dpi.
+        in: query
+        name: fileType
+        schema:
+          enum:
+          - png
+          - pdf
+          - jpeg
+          type: string
+      - description: Number of seconds the capture file is cached by our CDN. An API
+          request that is loaded through the cache does not count as a paid request.
+          You can set a number of seconds from 0 seconds up to 2592000 seconds. This
+          is a maximum of 30 days.
+        in: query
+        name: ttl
+        schema:
+          format: int64
+          maximum: 2592000
+          minimum: 0
+          type: integer
+      - description: Force the API to invalidate the cache and capture a new screenshot.
+          This call costs you additional money, because a call of a cache hit is not
+          charged.
+        in: query
+        name: invalidate
+        schema:
+          type: boolean
+      - description: Set this parameter to true if you want to screenshot the whole
+          web page in full size.
+        in: query
+        name: full
+        schema:
+          type: boolean
+      - description: Set this parameter to true to scroll down through the entire
+          page before taking a screenshot. This is useful for triggering animations
+          or lazy load elements in full screen.
+        in: query
+        name: lazyload_scroll
+        schema:
+          default: false
+          type: boolean
+      - description: The delay in milliseconds to wait after the page loads before
+          taking the screenshot. This is in milliseconds. One second is 1000 milliseconds.
+          From 0 milliseconds to a maximum of 10,000 milliseconds.
+        in: query
+        name: delay
+        schema:
+          format: int64
+          maximum: 10000
+          minimum: 0
+          type: integer
+      - description: The width, in pixels, of the browser viewport to use.
+        in: query
+        name: width
+        schema:
+          default: 1920
+          format: int64
+          minimum: 1
+          type: integer
+      - description: The height, in pixels, of the browser viewport to use. Ignored
+          if you set full to true.
+        in: query
+        name: height
+        schema:
+          default: 1080
+          format: int64
+          minimum: 1
+          type: integer
+      - description: The quality of the image between 0 and 100. This works only for
+          the jpeg format, for PNG images the parameter is applied only during compression.
+        in: query
+        name: quality
+        schema:
+          default: 90
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: The scale factor of the device to use when taking the screenshot.
+          For example, a scale factor of 2 produces a high-resolution screenshot suitable
+          for viewing on Retina devices. The larger the scale factor, the larger the
+          screenshot produced.
+        in: query
+        name: scale
+        schema:
+          default: 1.0
+          format: float64
+          maximum: 2
+          minimum: 1
+          type: number
+      - description: The starting point of a section screenshot on the X axis.
+        in: query
+        name: x
+        schema:
+          default: 0
+          format: int64
+          minimum: 0
+          type: integer
+      - description: The starting point of a section screenshot on the Y axis.
+        in: query
+        name: "y"
+        schema:
+          default: 0
+          format: int64
+          minimum: 0
+          type: integer
+      - description: If you set Redirect, the response will be a 302 redirect to the
+          screenshot file in our CDN.
+        in: query
+        name: redirect
+        schema:
+          default: false
+          type: boolean
+      - description: Sets the Accept-Language header on requests to the target URL
+          so that you can take screenshots from a website with a specific language.
+        in: query
+        name: language
+        schema:
+          type: string
+      - description: Sets a random user agent header to emulate a different devices
+          when taking screenshots.
+        in: query
+        name: random_user_agent
+        schema:
+          default: false
+          type: boolean
+      - description: Sets the user agent header to emulate a specific device when
+          taking screenshots.
+        in: query
+        name: user_agent
+        schema:
+          type: string
+      - description: A semicolon-separated list of header parameters to be used when
+          capturing the screenshot. Each header should be passed as a key-value pair
+          and multiple pairs should be separated by a semicolon.
+        in: query
+        name: headers
+        schema:
+          type: string
+      - description: A semicolon-separated list of cookies to be used when capturing
+          the screenshot. Each cookies should be passed as a key-value pair and multiple
+          pairs should be separated by a semicolon.
+        in: query
+        name: cookies
+        schema:
+          type: string
+      - description: Inject your custom CSS.
+        in: query
+        name: css
+        schema:
+          type: string
+      - description: Inject your custom Javascript.
+        in: query
+        name: js
+        schema:
+          type: string
+      - description: Wait until the specified CSS selector matches an element present
+          in the page before taking a screenshot. The process is canceled after 60
+          seconds.
+        in: query
+        name: wait
+        schema:
+          type: string
+      - description: Takes a screenshot of the first element matched by the specified
+          CSS selector. This is ignored if full is true. (This option cannot be used
+          with the PDF export format.)
+        in: query
+        name: element
+        schema:
+          type: string
+      - description: The IANA time zone identifier used for this capture.
+        in: query
+        name: timezone
+        schema:
+          default: Europe/Berlin
+          type: string
+      - description: The device used in the emulation.
+        in: query
+        name: device
+        schema:
+          enum:
+          - Blackberry PlayBook
+          - Blackberry PlayBook landscape
+          - BlackBerry Z30
+          - BlackBerry Z30 landscape
+          - Galaxy Note 3
+          - Galaxy Note 3 landscape
+          - Galaxy Note II
+          - Galaxy Note II landscape
+          - Galaxy S III
+          - Galaxy S III landscape
+          - Galaxy S5
+          - Galaxy S5 landscape
+          - iPad
+          - iPad landscape
+          - iPad Mini
+          - iPad Mini landscape
+          - iPad Pro
+          - iPad Pro landscape
+          - iPhone 4
+          - iPhone 4 landscape
+          - iPhone 5
+          - iPhone 5 landscape
+          - iPhone 6
+          - iPhone 6 landscape
+          - iPhone 6 Plus
+          - iPhone 6 Plus landscape
+          - iPhone 7
+          - iPhone 7 landscape
+          - iPhone 7 Plus
+          - iPhone 7 Plus landscape
+          - iPhone 8
+          - iPhone 8 landscape
+          - iPhone 8 Plus
+          - iPhone 8 Plus landscape
+          - iPhone SE
+          - iPhone SE landscape
+          - iPhone X
+          - iPhone X landscape
+          - iPhone XR
+          - iPhone XR landscape
+          - iPhone 11
+          - iPhone 11 landscape
+          - iPhone 11 Pro
+          - iPhone 11 Pro landscape
+          - iPhone 11 Pro Max
+          - iPhone 11 Pro Max landscape
+          - JioPhone 2
+          - JioPhone 2 landscape
+          - Kindle Fire HDX
+          - Kindle Fire HDX landscape
+          - LG Optimus L70
+          - LG Optimus L70 landscape
+          - Microsoft Lumia 550
+          - Microsoft Lumia 950
+          - Microsoft Lumia 950 landscape
+          - Nexus 10
+          - Nexus 10 landscape
+          - Nexus 4
+          - Nexus 4 landscape
+          - Nexus 5
+          - Nexus 5 landscape
+          - Nexus 5X
+          - Nexus 5X landscape
+          - Nexus 6
+          - Nexus 6 landscape
+          - Nexus 6P
+          - Nexus 6P landscape
+          - Nexus 7
+          - Nexus 7 landscape
+          - Nokia Lumia 520
+          - Nokia Lumia 520 landscape
+          - Nokia N9
+          - Nokia N9 landscape
+          - Pixel 2
+          - Pixel 2 landscape
+          - Pixel 2 XL
+          - Pixel 2 XL landscape
+          type: string
+      - description: The latitude used in the emulation of the geo-location.
+        in: query
+        name: latitude
+        schema:
+          default: 0.0
+          format: float64
+          maximum: 90
+          minimum: -90
+          type: number
+      - description: The longitude used in the emulation of the geo-location.
+        in: query
+        name: longitude
+        schema:
+          default: 0.0
+          format: float64
+          maximum: 180
+          minimum: -180
+          type: number
+      - description: The accuracy in meters used in the emulation of the geo-location.
+        in: query
+        name: accuracy
+        schema:
+          default: 2.0
+          format: float64
+          minimum: 0
+          type: number
+      - description: Use an address of a proxy server through which the screenshot
+          should be taken. The proxy address should be formatted as http://username:password@proxyserver.com:31280
+        in: query
+        name: proxy
+        schema:
+          type: string
+      - description: Prevent ads from being displayed. Block requests from popular
+          ad networks and hide frequent ads.
+        in: query
+        name: adblock
+        schema:
+          default: false
+          type: boolean
+      - description: Prevent cookie banners and pop-ups from being displayed. The
+          best possible result is tried.
+        in: query
+        name: hide_cookie_banners
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+            application/pdf:
+              schema:
+                format: binary
+                type: string
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+            image/png:
+              schema:
+                format: binary
+                type: string
+          description: the requested screenshot as binary
+          headers:
+            X-REMAINING-QUOTA-PREPAID:
+              schema:
+                format: int64
+                type: integer
+            X-REMAINING-QUOTA:
+              schema:
+                format: int64
+                type: integer
+            Content-Type:
+              schema:
+                type: string
+            Location:
+              schema:
+                type: string
+        "302":
+          content: {}
+          description: the requested screenshot as redirect
+          headers:
+            X-REMAINING-QUOTA-PREPAID:
+              schema:
+                format: int64
+                type: integer
+            X-REMAINING-QUOTA:
+              schema:
+                format: int64
+                type: integer
+            Location:
+              schema:
+                type: string
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: unexpected error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+      tags:
+      - screenshot
+      x-accepts: application/json
+  /capture/{token}/{hash}:
+    get:
+      description: Webseite-Herunterladen.de Screenshot Capture is a very simple but
+        powerful screenshot API that anyone can easily use to create pixel-perfect
+        website screenshots. It always uses a recent version of Chrome to ensure that
+        all modern web features are fully supported and rendering is exactly as your
+        customers would expect.
+      operationId: placeScreenshotOrderAuthenticated
+      parameters:
+      - description: A valid token is needed to make paid API calls. Tokens can be
+          managed from your account.
+        in: path
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: The hash value is for authenticated requests. If you want to
+          publish this URL, you should use the authenticated requests.
+        in: path
+        name: hash
+        required: true
+        schema:
+          type: string
+      - description: The URL of the website you want to capture. Please include the
+          protocol (http:// or https://).
+        in: query
+        name: url
+        required: true
+        schema:
+          type: string
+      - description: The image file format of the captured screenshot. Either png,
+          jpeg or PDF with 72 dpi.
+        in: query
+        name: fileType
+        schema:
+          enum:
+          - png
+          - pdf
+          - jpeg
+          type: string
+      - description: Number of seconds the capture file is cached by our CDN. An API
+          request that is loaded through the cache does not count as a paid request.
+          You can set a number of seconds from 0 seconds up to 2592000 seconds. This
+          is a maximum of 30 days.
+        in: query
+        name: ttl
+        schema:
+          format: int64
+          maximum: 2592000
+          minimum: 0
+          type: integer
+      - description: Force the API to invalidate the cache and capture a new screenshot.
+          This call costs you additional money, because a call of a cache hit is not
+          charged.
+        in: query
+        name: invalidate
+        schema:
+          type: boolean
+      - description: Set this parameter to true if you want to screenshot the whole
+          web page in full size.
+        in: query
+        name: full
+        schema:
+          type: boolean
+      - description: Set this parameter to true to scroll down through the entire
+          page before taking a screenshot. This is useful for triggering animations
+          or lazy load elements in full screen.
+        in: query
+        name: lazyload_scroll
+        schema:
+          default: false
+          type: boolean
+      - description: The delay in milliseconds to wait after the page loads before
+          taking the screenshot. This is in milliseconds. One second is 1000 milliseconds.
+          From 0 milliseconds to a maximum of 10,000 milliseconds.
+        in: query
+        name: delay
+        schema:
+          format: int64
+          maximum: 10000
+          minimum: 0
+          type: integer
+      - description: The width, in pixels, of the browser viewport to use.
+        in: query
+        name: width
+        schema:
+          default: 1920
+          format: int64
+          minimum: 1
+          type: integer
+      - description: The height, in pixels, of the browser viewport to use. Ignored
+          if you set full to true.
+        in: query
+        name: height
+        schema:
+          default: 1080
+          format: int64
+          minimum: 1
+          type: integer
+      - description: The quality of the image between 0 and 100. This works only for
+          the jpeg format, for PNG images the parameter is applied only during compression.
+        in: query
+        name: quality
+        schema:
+          default: 90
+          format: int64
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: The scale factor of the device to use when taking the screenshot.
+          For example, a scale factor of 2 produces a high-resolution screenshot suitable
+          for viewing on Retina devices. The larger the scale factor, the larger the
+          screenshot produced.
+        in: query
+        name: scale
+        schema:
+          default: 1.0
+          format: float64
+          maximum: 2
+          minimum: 1
+          type: number
+      - description: The starting point of a section screenshot on the X axis.
+        in: query
+        name: x
+        schema:
+          default: 0
+          format: int64
+          minimum: 0
+          type: integer
+      - description: The starting point of a section screenshot on the Y axis.
+        in: query
+        name: "y"
+        schema:
+          default: 0
+          format: int64
+          minimum: 0
+          type: integer
+      - description: If you set Redirect, the response will be a 302 redirect to the
+          screenshot file in our CDN.
+        in: query
+        name: redirect
+        schema:
+          default: false
+          type: boolean
+      - description: Sets the Accept-Language header on requests to the target URL
+          so that you can take screenshots from a website with a specific language.
+        in: query
+        name: language
+        schema:
+          type: string
+      - description: Sets a random user agent header to emulate a different devices
+          when taking screenshots.
+        in: query
+        name: random_user_agent
+        schema:
+          default: false
+          type: boolean
+      - description: Sets the user agent header to emulate a specific device when
+          taking screenshots.
+        in: query
+        name: user_agent
+        schema:
+          type: string
+      - description: A semicolon-separated list of header parameters to be used when
+          capturing the screenshot. Each header should be passed as a key-value pair
+          and multiple pairs should be separated by a semicolon.
+        in: query
+        name: headers
+        schema:
+          type: string
+      - description: A semicolon-separated list of cookies to be used when capturing
+          the screenshot. Each cookies should be passed as a key-value pair and multiple
+          pairs should be separated by a semicolon.
+        in: query
+        name: cookies
+        schema:
+          type: string
+      - description: Inject your custom CSS.
+        in: query
+        name: css
+        schema:
+          type: string
+      - description: Inject your custom Javascript.
+        in: query
+        name: js
+        schema:
+          type: string
+      - description: Wait until the specified CSS selector matches an element present
+          in the page before taking a screenshot. The process is canceled after 60
+          seconds.
+        in: query
+        name: wait
+        schema:
+          type: string
+      - description: Takes a screenshot of the first element matched by the specified
+          CSS selector. This is ignored if full is true. (This option cannot be used
+          with the PDF export format.)
+        in: query
+        name: element
+        schema:
+          type: string
+      - description: The IANA time zone identifier used for this capture.
+        in: query
+        name: timezone
+        schema:
+          default: Europe/Berlin
+          type: string
+      - description: The device used in the emulation.
+        in: query
+        name: device
+        schema:
+          enum:
+          - Blackberry PlayBook
+          - Blackberry PlayBook landscape
+          - BlackBerry Z30
+          - BlackBerry Z30 landscape
+          - Galaxy Note 3
+          - Galaxy Note 3 landscape
+          - Galaxy Note II
+          - Galaxy Note II landscape
+          - Galaxy S III
+          - Galaxy S III landscape
+          - Galaxy S5
+          - Galaxy S5 landscape
+          - iPad
+          - iPad landscape
+          - iPad Mini
+          - iPad Mini landscape
+          - iPad Pro
+          - iPad Pro landscape
+          - iPhone 4
+          - iPhone 4 landscape
+          - iPhone 5
+          - iPhone 5 landscape
+          - iPhone 6
+          - iPhone 6 landscape
+          - iPhone 6 Plus
+          - iPhone 6 Plus landscape
+          - iPhone 7
+          - iPhone 7 landscape
+          - iPhone 7 Plus
+          - iPhone 7 Plus landscape
+          - iPhone 8
+          - iPhone 8 landscape
+          - iPhone 8 Plus
+          - iPhone 8 Plus landscape
+          - iPhone SE
+          - iPhone SE landscape
+          - iPhone X
+          - iPhone X landscape
+          - iPhone XR
+          - iPhone XR landscape
+          - iPhone 11
+          - iPhone 11 landscape
+          - iPhone 11 Pro
+          - iPhone 11 Pro landscape
+          - iPhone 11 Pro Max
+          - iPhone 11 Pro Max landscape
+          - JioPhone 2
+          - JioPhone 2 landscape
+          - Kindle Fire HDX
+          - Kindle Fire HDX landscape
+          - LG Optimus L70
+          - LG Optimus L70 landscape
+          - Microsoft Lumia 550
+          - Microsoft Lumia 950
+          - Microsoft Lumia 950 landscape
+          - Nexus 10
+          - Nexus 10 landscape
+          - Nexus 4
+          - Nexus 4 landscape
+          - Nexus 5
+          - Nexus 5 landscape
+          - Nexus 5X
+          - Nexus 5X landscape
+          - Nexus 6
+          - Nexus 6 landscape
+          - Nexus 6P
+          - Nexus 6P landscape
+          - Nexus 7
+          - Nexus 7 landscape
+          - Nokia Lumia 520
+          - Nokia Lumia 520 landscape
+          - Nokia N9
+          - Nokia N9 landscape
+          - Pixel 2
+          - Pixel 2 landscape
+          - Pixel 2 XL
+          - Pixel 2 XL landscape
+          type: string
+      - description: The latitude used in the emulation of the geo-location.
+        in: query
+        name: latitude
+        schema:
+          default: 0.0
+          format: float64
+          maximum: 90
+          minimum: -90
+          type: number
+      - description: The longitude used in the emulation of the geo-location.
+        in: query
+        name: longitude
+        schema:
+          default: 0.0
+          format: float64
+          maximum: 180
+          minimum: -180
+          type: number
+      - description: The accuracy in meters used in the emulation of the geo-location.
+        in: query
+        name: accuracy
+        schema:
+          default: 2.0
+          format: float64
+          minimum: 0
+          type: number
+      - description: Use an address of a proxy server through which the screenshot
+          should be taken. The proxy address should be formatted as http://username:password@proxyserver.com:31280
+        in: query
+        name: proxy
+        schema:
+          type: string
+      - description: Prevent ads from being displayed. Block requests from popular
+          ad networks and hide frequent ads.
+        in: query
+        name: adblock
+        schema:
+          default: false
+          type: boolean
+      - description: Prevent cookie banners and pop-ups from being displayed. The
+          best possible result is tried.
+        in: query
+        name: hide_cookie_banners
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+            application/pdf:
+              schema:
+                format: binary
+                type: string
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+            image/png:
+              schema:
+                format: binary
+                type: string
+          description: the requested screenshot as binary
+          headers:
+            X-REMAINING-QUOTA-PREPAID:
+              schema:
+                format: int64
+                type: integer
+            X-REMAINING-QUOTA:
+              schema:
+                format: int64
+                type: integer
+            Content-Type:
+              schema:
+                type: string
+            Location:
+              schema:
+                type: string
+        "302":
+          content: {}
+          description: the requested screenshot as redirect
+          headers:
+            X-REMAINING-QUOTA-PREPAID:
+              schema:
+                format: int64
+                type: integer
+            X-REMAINING-QUOTA:
+              schema:
+                format: int64
+                type: integer
+            Location:
+              schema:
+                type: string
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: unexpected error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+      tags:
+      - screenshot
+      x-accepts: application/json
+components:
+  schemas:
+    ErrorModel:
+      description: An error description
+      properties:
+        code:
+          description: The HTTP-error number
+          format: int64
+          type: integer
+        message:
+          description: A textual description of the error occured.
+          type: string
+      type: object
+x-original-swagger-version: "2.0"
+
