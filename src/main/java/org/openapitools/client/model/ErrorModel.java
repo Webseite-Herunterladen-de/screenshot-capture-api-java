@@ -28,7 +28,7 @@ import java.io.IOException;
  * An error description
  */
 @ApiModel(description = "An error description")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-09T21:25:07.574+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-08-22T18:56:37.818+02:00[Europe/Berlin]")
 public class ErrorModel {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

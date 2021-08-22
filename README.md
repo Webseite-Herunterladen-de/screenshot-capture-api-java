@@ -2,7 +2,7 @@
 
 Screenshot Capture API
 - API version: 1.0.0
-  - Build date: 2021-08-09T21:25:07.574+02:00[Europe/Berlin]
+  - Build date: 2021-08-22T18:56:37.818+02:00[Europe/Berlin]
 
 Webseite-Herunterladen.de Screenshot Capture is a very simple but powerful screenshot API that anyone can easily use to create pixel-perfect website screenshots. It always uses a recent version of Chrome to ensure that all modern web features are fully supported and rendering is exactly as your customers would expect.
 
