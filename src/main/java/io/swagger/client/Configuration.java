@@ -12,7 +12,7 @@
 
 package io.swagger.client;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-08-26T16:26:18.655+02:00[Europe/Berlin]")public class Configuration {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-08-26T22:50:24.350+02:00[Europe/Berlin]")public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
     /**
