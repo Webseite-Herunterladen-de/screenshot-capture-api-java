@@ -25,7 +25,7 @@ import java.io.IOException;
  * An error description
  */
 @Schema(description = "An error description")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-08-28T17:51:01.574+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-08-29T19:55:46.213+02:00[Europe/Berlin]")
 public class ErrorModel {
   @SerializedName("code")
   private Long code = null;
