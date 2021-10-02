@@ -1,6 +1,6 @@
 /*
  * Screenshot Capture API
- * Webseite-Herunterladen.de Screenshot Capture is a very simple but powerful screenshot API that anyone can easily use to create pixel-perfect website screenshots. It always uses a recent version of Chrome to ensure that all modern web features are fully supported and rendering is exactly as your customers would expect.
+ * screenshot-capture-api.com Screenshot Capture is a very simple but powerful screenshot API that anyone can easily use to create pixel-perfect website screenshots. It always uses a recent version of Chrome to ensure that all modern web features are fully supported and rendering is exactly as your customers would expect.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -53,7 +53,7 @@ import io.swagger.client.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "https://api.webseite-herunterladen.de/v1";
+    private String basePath = "https://api.screenshot-capture-api.com/v1";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -106,7 +106,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api.webseite-herunterladen.de/v1
+     * @param basePath Base path of the URL (e.g https://api.screenshot-capture-api.com/v1
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
